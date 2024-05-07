@@ -68,7 +68,7 @@ async def login(request : Request):
         "email":  body["email"],
         "password": body["password"]
     }
-
+    
     result = await auth_controller.login(payload)
 
     return result
