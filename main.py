@@ -1,4 +1,3 @@
-import pymongo as mongo
 from fastapi import FastAPI
 from src.routes.index import router
 
