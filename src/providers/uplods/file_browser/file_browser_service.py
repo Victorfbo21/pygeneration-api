@@ -65,7 +65,7 @@ class FileBrowser:
             print(upload_image_public_response['hash'])
             return {
                 "error": False,
-                "fileURL": f"{os.environ.get("SHARED_UPLOAD_URL_BASE")}".replace("@@HASH@@",
+                "fileURL": f"{os.environ.get('SHARED_UPLOAD_URL_BASE')}".replace("@@HASH@@",
                                                                                  upload_image_public_response['hash'])
             }
 

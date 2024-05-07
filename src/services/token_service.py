@@ -2,6 +2,7 @@ import jwt
 import datetime
 import os
 
+
 class TokenService:
 
     @staticmethod

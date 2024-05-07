@@ -39,6 +39,12 @@ class AuthService:
 
             return {
                 "data": {
+                    "user": {
+                        "name": user["name"],
+                        "email": user["email"],
+                        "whatsapp": user["whatsapp"],
+                        "type": user["type"]
+                    },
                     "accessToken": token
                 },
                 "error": False,

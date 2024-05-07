@@ -1,20 +1,16 @@
-# Use a imagem base do Python
-FROM python:3.9-slim
+FROM python:3.9
 
-# Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Copia os arquivos necessários para o contêiner
-COPY requirements.txt .
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+RUN pip install uvicorn
+RUN pip install httpx
+RUN pip install PyJWT
+RUN pip install python-multipart
 
-# Instala as dependências
-RUN pip install --no-cache-dir -r requirements.txt
+ENV PATH="/usr/local/bin:${PATH}"
 
-# Copia o restante dos arquivos da aplicação para o contêiner
 COPY . .
 
-# Exponha a porta 8000
-EXPOSE 8000
-
-# Comando para iniciar o servidor
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

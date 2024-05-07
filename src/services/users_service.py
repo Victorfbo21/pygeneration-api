@@ -25,7 +25,7 @@ class UsersService:
 
             uploaded_file = await self._usersRepository.upload_profile_image(request_file)
 
-            return uplod_file_response
+            return uploaded_file
         except Exception as e:
             print(f"Erro ao Subir Imagem : {e}")
 
