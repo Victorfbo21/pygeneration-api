@@ -1,15 +1,7 @@
-import pymongo as mongo
 from fastapi import APIRouter, Request
 from src.controllers.auth_controller import AuthController
-from dotenv import load_dotenv
-import os
-load_dotenv()
 
-MONGO_URL = os.getenv("MONGO_URL")
-MONGO_DB_NAME = os.getenv("MONGO_DB_NAME")
-
-client = mongo.MongoClient(MONGO_URL)
-db = client[MONGO_DB_NAME]
+from src.database.db import db
 auth_controller = AuthController(db)
 
 

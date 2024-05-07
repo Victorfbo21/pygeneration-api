@@ -7,5 +7,3 @@ app.include_router(router, prefix='/api')
 
 print('--------> Api Rodando em http://localhost:8000 <--------')
 
-
-

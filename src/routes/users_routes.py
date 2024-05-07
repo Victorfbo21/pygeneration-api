@@ -1,19 +1,11 @@
-import pymongo as mongo
 from fastapi import APIRouter, UploadFile, Request
-from dotenv import load_dotenv
+from src.database.db import db
 import requests
 from src.controllers.users_controller import UsersController
-import os
 
 
 users_router = APIRouter()
 
-load_dotenv()
-MONGO_URL = os.getenv("MONGO_URL")
-MONGO_DB_NAME = os.getenv("MONGO_DB_NAME")
-
-client = mongo.MongoClient(MONGO_URL)
-db = client[MONGO_DB_NAME]
 users_controller = UsersController(db)
 
 
