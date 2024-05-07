@@ -19,7 +19,6 @@ class UsersService:
         except Exception as e:
             print(f"Erro ao criar usuário: {e}")
 
-
     async def upload_profile_image(self, request_file):
         try:
             uplod_file_response = await self._fileBrowserSerice.upload_image(request_file)

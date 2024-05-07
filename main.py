@@ -24,15 +24,11 @@ auth_controller = AuthController(db)
 async def index():
     return 'Banco Conectado e API Rodando!'
 
-
 @app.get('/users')
 def list_users():
     return users_controller.listar_usuarios()
-
-
 @app.post('/users/create')
 async def create_user():
-    # Use 'async def' if your UsersController method is asynchronous
     body = await requests.Request.json()
     return users_controller.criar_usuario(body)
 
