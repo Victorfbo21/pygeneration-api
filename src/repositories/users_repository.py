@@ -2,7 +2,7 @@ import bcrypt
 import os
 import asyncio
 from bson.objectid import ObjectId
-
+from src.models.service import Service
 
 class UsersRepository:
 

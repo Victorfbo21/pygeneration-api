@@ -2,11 +2,10 @@ from fastapi import APIRouter, Request
 from src.controllers.auth_controller import AuthController
 
 from src.database.db import db
+
 auth_controller = AuthController(db)
 
-
 auth_router = APIRouter()
-
 
 @auth_router.post("/auth/login")
 async def login(request: Request):
