@@ -7,7 +7,7 @@ auth_controller = AuthController(db)
 
 auth_router = APIRouter()
 
-@auth_router.post("/auth/login")
+@auth_router.post("/login")
 async def login(request: Request):
     body = await request.json()
 

@@ -9,7 +9,7 @@ users_router = APIRouter()
 users_controller = UsersController(db)
 
 
-@users_router.post('/users/create')
+@users_router.post('/create')
 async def create_user():
     body = await requests.Request.json()
     return users_controller.criar_usuario(body)
@@ -20,7 +20,7 @@ def list_users():
     return users_controller.listar_usuarios()
 
 
-@users_router.put('/users/upload-image')
+@users_router.put('/upload-image')
 async def upload_profile_image(file: UploadFile):
 
     upload_image_data = {
@@ -33,7 +33,7 @@ async def upload_profile_image(file: UploadFile):
     return result
 
 
-@users_router.put('/users/update')
+@users_router.put('/update')
 async def update_user(request: Request):
     body = await request.json()
     user_id = body["user_id"]
