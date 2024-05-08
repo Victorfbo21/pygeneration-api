@@ -62,7 +62,7 @@ class FileBrowser:
 
             upload_image_public_response = await create_shared_file(public_path, token)
 
-            print(upload_image_public_response['hash'])
+
             return {
                 "error": False,
                 "fileURL": f"{os.environ.get('SHARED_UPLOAD_URL_BASE')}".replace("@@HASH@@",
