@@ -21,7 +21,7 @@ class UsersController:
     def criar_usuario(self, request_body):
         try:
             created_user = self.usersService.criar_usuario(request_body)
-            return jsonify(created_user)
+            return created_user
         except Exception as e:
             print(f"Erro ao Encaminhar Requisição de Criação de usuário : {e}")
 
@@ -38,4 +38,13 @@ class UsersController:
             updated = await self.usersService.atualizar_usuario(user_id,payload)
         except Exception as e:
             print(f"Erro ao Atualizar Usuário", e)
+            return e
+
+    async def recovery_password(self, recovery_data):
+        try:
+            updated = await self.usersService.recovery_password(recovery_data)
+
+            return updated
+        except Exception as e:
+            print(f"Erro ao Recuperar Password do Usuário", e)
             return e

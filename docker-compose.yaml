@@ -1,9 +1,18 @@
 version: '3'
 
 services:
-  app:
-    build: .
+  rabbitmq:
+    image: rabbitmq:3.8.19-management-alpine
+    container_name: 'rabbitmq'
+    restart: always
     ports:
-      - "8000:8000"
+      - "5672:5672"  # Porta para comunicação AMQP
+      - "15672:15672"  # Porta para acesso ao painel de controle (opcional)
     volumes:
-      - .:/app
+      - rabbitmq_data:/var/lib/rabbitmq  # Volume para persistência dos dados
+    environment:
+      RABBITMQ_DEFAULT_USER: "username"
+      RABBITMQ_DEFAULT_PASS: "password"
+
+volumes:
+  rabbitmq_data:

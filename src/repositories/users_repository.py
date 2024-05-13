@@ -16,26 +16,29 @@ class UsersRepository:
         except Exception as e:
             print(f"Erro ao Listar Usuários {e}")
 
-    def inserir_usuario(self, novo_usuario):
+    async def inserir_usuario(self, novo_usuario):
         try:
-            verify_exists = self.db.users.find_one({'email': novo_usuario["email"]})
+            verify_exists = await self.db.users.find_one({'email': novo_usuario["email"]})
 
             if verify_exists:
                 return {
                     'data': None,
                     'error': True,
-                    'msg': 'Usuário Já Cadastrado'
+                    'statusCode': 400,
+                    'message': 'Usuário Já Cadastrado'
                 }
+            
             novo_usuario["password"] = (bcrypt.hashpw(novo_usuario["password"].encode('utf-8'), bcrypt.gensalt())
                                         .decode('utf-8'))
-
+            
             user_created = self.db.users.insert_one(novo_usuario)
             inserted_id = user_created.inserted_id
 
             return {
                 'data': str(inserted_id),
                 'error': False,
-                'msg': 'Usuário Cadastrado com Sucesso!'
+                'statusCode': 201,
+                'message': 'Usuário Cadastrado com Sucesso!'
             }
 
         except Exception as e:

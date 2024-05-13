@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Response
 from src.controllers.auth_controller import AuthController
-
+import json
 from src.database.db import db
 
 auth_controller = AuthController(db)
@@ -17,5 +17,6 @@ async def login(request: Request):
     }
 
     result = await auth_controller.login(payload)
-
-    return result
+    print(result["statusCode"])
+    response = Response(content=json.dumps(result), status_code=result["statusCode"])
+    return response
